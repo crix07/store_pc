@@ -1,0 +1,107 @@
+<div class="lds-css ng-scope" style="margin-top:100px;" *ngIf="loading">
+    <div style="width:100%;height:100%" class="lds-eclipse">
+        <div></div>
+    </div>
+</div>
+
+<div class="contenedor contProduct animated fadeIn" style="margin-top: 100px;">
+    <div class="images">
+
+        <div id="slider" class="flexslider text-center" style="height:470px; width:100%; margin:0;">
+
+            <ul class="slides" style="display: flex;">
+                <li *ngFor="let img of imgProduct; let i = index">
+                    <img (click)="Elevate($event, i)" class="ZoomImages" style="cursor:pointer;max-width:100%; max-height:400px;" [src]="img?.LargeImage?.URL" />
+                </li>
+            </ul>
+        </div>
+
+        <div class="flexslider" id="carousel">
+            <ul class="slides">
+                <li *ngFor="let imgPage of imgProduct">
+                    <img style="cursor:pointer;" [src]="imgPage?.SmallImage.URL" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="lado-detalles">
+
+        <div class="right primero">
+            <h1 class="title">gtx nvidia 1080 TI</h1>
+            <p class="precio">$RD 300,000</p>
+        </div>
+
+        <div class="segundo right">
+            <div class="marca">
+                <div>
+                    <b>Marca: </b> Nvidia
+                </div>
+                <div>
+                    <b>Modelo: </b> {{ detailsProduct?.ItemAttributes.Model }}
+                </div>
+                <div>
+                    <b>Garantia: </b> {{ detailsProduct?.ItemAttributes.Warranty }}
+                </div>
+                <div>
+                    <b>Size: </b> {{ detailsProduct?.ItemAttributes.Size}}
+                </div>
+                <div>
+                    <b>Fabricante: </b> {{detailsProduct?.ItemAttributes.Manufacturer}}
+                </div>
+                <br>
+                <div>
+                    <b>Cantidad:   </b>
+                    <i style="margin-left:50px;cursor:pointer;" (click)="menosUnid()" class="fa fa-minus" aria-hidden="true"></i>
+                    <input class="quantity" [(ngModel)]="Quantity" type="text" [value]="Quantity">
+                    <i style="cursor:pointer;" (click)="addUnid()" class="fa fa-plus" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a style="margin:5px;" rel="nofollow" target="_blank" [href]="amazon+'AssociateTag='+tag+'&ASIN.1='+detailsProduct.ASIN+'&Quantity.1='+Quantity" class="btn btn-success"><i style="font-size:25px;" class="fa fa-shopping-cart" aria-hidden="true"></i> Añadir al CARRITO</a>
+            <a style="margin:5px;" rel="nofollow" target="_blank" class="btn btn-primary comprar" [href]="detailsProduct.DetailPageURL">Comprar</a>
+        </div>
+
+        <div class="tercero">
+            <div class="red-soc">
+                <!-- <i style="cursor:pointer; color:#007bff;" class="fa fa-twitter" aria-hidden="true"></i> -->
+                <i style="cursor:pointer; color:#007bff;" (click)="shareFacebook(detailsProduct.DetailPageURL)" class="fa fa-facebook" aria-hidden="true"></i>
+                <a target="_blank" [href]="'https://plus.google.com/share?url='+detailsProduct.DetailPageURL">
+                    <i style="cursor:pointer;" class="fa fa-google" aria-hidden="true"></i>
+                </a>
+                <a [href]="'mailto:amigo@correo.com?subject=Mira lo que he visto en GeeK PC&body=Mira lo que he visto en GeeK PC amigo!! un ' + detailsProduct.ItemAttributes.Title +' por '+detailsProduct.ItemAttributes.ListPrice.FormattedPrice + ' en '+detailsProduct.DetailPageURL ">
+                    <i style="cursor:pointer;" class="fa fa-envelope" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="left">
+        </div>
+
+    </div>
+
+
+</div>
+<div class="caracteristica text-center animated fadeIn">
+    <h4 class="title">Características</h4>
+    <ul>
+        <li>°{{feacture}}</li>
+    </ul>
+</div>
+<div class="similares animated fadeIn">
+    <h3 class="text-center">Productos Relacionados</h3>
+    <div class="similar">
+
+        <ul class="slides similarpro">
+            <li style="cursor:pointer;display:flex;flex-direction:column;" class="text-center" (click)="similarTam(similar.ASIN)">
+                <img [src]="similar?.MediumImage?.URL" /><br>
+                <p>{{nameSimilar[i]}}</p>
+                <b>{{similar?.ItemAttributes?.ListPrice?.FormattedPrice}}</b>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- <iframe [src]="iframe" width="100%" height="1000" frameborder="0"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->

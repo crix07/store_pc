@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GeeK PC</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link type="text/css" href="assets/fontawesome/css/font-awesome.css">
+
+  <script src="assets/jquery.min.js"></script>
+  <script src="assets/jquery.elevateZoom-3.0.8.min.js"></script>
+  <script src="assets/jquery.flexslider.js" charset="utf-8"></script>
+
+</head>
+<body style="background-color:#f2f2f2; ">
+  <app-root>loading... please wait....</app-root>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '142879266413630',
+        xfbml      : true,
+        version    : 'v2.11'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/es_LA/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+</script>
+</body>
+</html>

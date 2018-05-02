@@ -1,0 +1,52 @@
+
+<div class="configuracion animated fadeIn" style="margin-top:100px;">
+
+
+<div class="titulo">
+  <h2>{{title}}</h2>
+</div>
+
+<div class="config">
+  <h4>Hola!! Bienvenido! {{ identity.displayName }}</h4>
+
+</div>
+</div>
+
+
+<div style="text-align:center;" class="alert alert-success" *ngIf="status == 'success'" >
+  Has Actualizados Tus Datos Correctamente
+</div>
+
+
+<div style="text-align:center;" class="alert alert-danger" *ngIf="status == 'err'">
+  No se guardaron los cambios, Por Favor intenta de nuevo
+</div>
+
+
+<div *ngIf="identity" class="container edit">
+<form [formGroup]="user" class="col-lg-10" (ngSubmit)="updateUser()">
+
+
+    <div class="nombre">
+    <label >Nombre</label>
+    <input type="text" name="nombre" formControlName="nombre" [(ngModel)]="identity.displayName" class="form-control" placeholder="Nombre">
+  </div>
+<br><br>
+<div class="email text-center">
+<h5>{{ identity.email }}</h5>
+</div>
+<br><br>
+<div class="image-for-edit" *ngIf="identity.photoURL != 'null'">
+  <img [src]="identity.photoURL">
+</div>
+
+
+  <!-- <p style="margin:20px 0;">
+    <label >Sube Tu Avatar</label>
+    <input type="file" formControlName="image"  placeholder="Subir Imagen" accept="image/x-png, image/gif,image/jpeg" (change)="fileChangeEvent($event)"/>
+  </p> -->
+
+  <button class="btn btn-success" type="submit" >Actualizar Mis Datos</button>
+  <button type="button" class="btn btn-danger" (click)="deleteAccount()">Eliminar Cuenta</button>
+</form>
+</div>

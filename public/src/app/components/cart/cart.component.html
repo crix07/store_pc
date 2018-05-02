@@ -1,0 +1,55 @@
+
+<h2 *ngIf="user" class="animated fadeIn" style="text-align:center;margin-top:100px;">Bienvenido a Tu Carro de compras {{user.displayName}}!</h2>
+
+
+<div class="container animated fadeIn pagos">
+
+<div class="items animated fadeIn">
+    <h4 *ngIf="productsStoreds">({{quantitySuma}})Acticulos en <strong>tu cesta</strong></h4>
+    <!-- <p>El carrito está vacío</p> -->
+    <table class="table">
+  <thead style="background:#ebeced;color:#888;">
+    <tr>
+      <th scope="col">ARTÍCULO</th>
+      <th scope="col">PRECIO</th>
+      <th scope="col">UNIDADES</th>
+      <th scope="col">TOTAL</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let product of productsStoreds; let i = index">
+      <a target="_blank" [href]="product.DetailPageURL"><th class="arti" scope="row"><img class="imageProduct" [src]="product.image" alt="">{{product.name}}</th></a>
+      <td style="padding-top:10%;">{{product.price}}</td>
+      <td style="padding-top:10%;">
+          <div class="unidCont">
+            <i style="cursor:pointer;" (click)="menosUnid(product.price, i)"  class="fa fa-minus" aria-hidden="true"></i>
+              <input class="unidad" type="text" [id]="i + 'unica'" [value]="product.Quantity" />
+            <i style="cursor:pointer;" (click)="addUnid(product.price, i)"  class="fa fa-plus" aria-hidden="true"></i>
+          </div>
+      </td>
+      <td [id]="i+'totales'" style="padding-top:10%;" >{{subtotalProducts[i] | currency:'USD':true }}</td>
+      <i (click)="delete(product._id)" class="eli fa fa-times" aria-hidden="true"></i>
+    </tr>
+  </tbody>
+</table>
+<hr class="bajo">
+<div class="izqui">
+  <button style="display:flex;cursor:pointer;" (click)="deleteAll(user._id)" class="btn btn-outline-secondary" type="button"><i class="material-icons">delete</i>Vaciar Cesta</button>
+  <!-- <button class="btn btn-outline-secondary" type="button">Guardar lista</button> -->
+  <button [routerLink]="['/']" class="btn btn-outline-secondary" type="button">Seguir Comprando</button>
+</div>
+</div>
+
+<div class="pago-left">
+  <hr class="arriba">
+  <hr class="arr">
+  <div class="total">
+    <h4>TOTAL</h4>
+    <p>{{ totalProducts }}</p>
+
+  </div>
+
+  <button style="width:100%;" type="button" class="btn btn-success">REALIZAR PEDIDO</button>
+</div>
+
+</div>

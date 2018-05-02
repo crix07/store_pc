@@ -1,0 +1,56 @@
+
+<div *ngIf="identity && !identity.emailVerified" style="margin-top:60px;color:#000;" class="text-center alert alert-secondary alert-dismissible fade show" role="alert">
+  <strong>Hola {{identity.displayName}}!</strong> Favor de verificar tu dirección de correo electrónico.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span style="font-size:20px;" aria-hidden="true">&times;</span>
+  </button>
+</div>
+<nav class="navbar header navbar-expand-lg navbar-dark bg-dark">
+
+  <a class="navbar-brand" [routerLink]="['/']">GeeK PC</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+    <form class="form-search form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" #termino (keyup.enter)="searchKey(termino.value)" placeholder="Buscar" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchKey(termino.value)" type="submit">Buscar</button>
+    </form>
+
+
+    <div class="tres" *ngIf="!identity">
+
+        <div class="login">
+          <button class="docs-button mat-button" mat-button="" [routerLink]="['/login']"  aria-disabled="false"><span class="mat-button-wrapper">
+            <i class="material-icons">perm_identity</i>
+            <span>Iniciar Sesion</span>
+          </span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button>
+        </div>
+
+        <div class="register">
+          <button class="docs-button mat-button" mat-button [routerLink]="['/register']"  aria-disabled="false"><span class="mat-button-wrapper">
+            <i class="material-icons">exit_to_app</i>
+            <span>Registrate</span>
+          </span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button>
+        </div>
+    </div>
+
+    <div class="mostrar" *ngIf="identity">
+      <button class="btn-mostrar" style="height:40px;margin-left:50px;" mat-button [matMenuTriggerFor]="menu">
+      <img class="user" *ngIf="identity.photoURL" [src]="identity.photoURL"><b class="name" *ngIf="identity.displayName">{{identity.displayName}}</b>
+      <img class="nouser" *ngIf="!identity.photoURL" src="../../../assets/dummy_user.png" alt="">
+
+         </button>
+     <mat-menu #menu="matMenu">
+       <a style="text-decoration:none;cursor:pointer;display:flex;align-items:center;"  [routerLink]="['/config']" mat-menu-item><i class="material-icons">build</i>Mis Datos</a>
+       <a style="text-decoration:none;cursor:pointer;display:flex;align-items:center;"  (click)="logout()" mat-menu-item><i class="material-icons">exit_to_app</i>Salir</a>
+     </mat-menu>
+    </div>
+
+
+
+  </div>
+</nav>

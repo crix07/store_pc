@@ -1,0 +1,72 @@
+
+
+<div class="login animated fadeIn" style="margin-top:100px;">
+
+<div class="formulario animated fadeIn">
+  <p class="texto animated fadeIn">{{title}}</p>
+
+  <div class="alert alert-danger animated fadeIn" *ngIf="err == 'auth/user-not-found'">
+    No existe una cuenta con este Correo Electrónico o el usuario puede haber sido Eliminado, Favor <a [routerLink]="['/register']">Registrate</a>
+  </div>
+
+  <div class="alert alert-danger animated fadeIn" *ngIf="err == 'auth/invalid-email' || err == 'auth/wrong-password'">
+    la Contraseña o el Email son Incorrectos, Favor de ingresarlos Correctamente
+  </div>
+
+<form [formGroup]="login" (ngSubmit)="loginFire()">
+    <p>
+      <mat-form-field>
+        <input type="email" style="color: #000;" formControlName="usuario" matInput placeholder="Correo Electronico">
+      </mat-form-field><br>
+      <span style="color:red;font-size:12px;" *ngIf="!login.controls.usuario.valid && login.controls.usuario.touched">
+        Por favor Ingresa Tu Correo Electronico Correctamente
+      </span>
+    </p>
+
+  <p>
+    <mat-form-field>
+      <input type="password" style="color: #000;" formControlName="password" matInput  placeholder="Constraseña">
+    </mat-form-field><br>
+    <span style="color:red;font-size:12px;" *ngIf="!login.controls.password.valid && login.controls.password.touched">
+      Por favor Ingresa Tu Contraseña  Correctamente
+    </span>
+  </p>
+
+    <button class="btn btn-success" style="background-color:#218838;" mat-button  type="submit">{{title}}</button>
+
+
+</form>
+</div>
+</div>
+<br>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <a [routerLink]="['/reset-password']">¿Has olvidado la contraseña?</a>
+  </div>
+  <br><br>
+  <b class="col-md-12 text-center">O</b>
+</div>
+
+<br>
+<div class="row red-soc">
+  <div class="col-md-12 text-center">
+    <p>Ingrese con su Red Social Favorita!</p>
+    <div class="facebook">
+      <div class="face" (click)="ingresar('facebook')">
+      <i class="facebookIcon fa fa-facebook" aria-hidden="true"></i>
+      <b>Continuar con Facebook</b>
+    </div>
+    </div>
+
+
+    <div class="google">
+      <div class="goo" (click)="ingresar('google')">
+      <i class="googleIcon fa fa-google" aria-hidden="true"></i>
+      <b>Continuar con Google</b>
+    </div>
+    </div>
+
+
+  </div>
+</div>

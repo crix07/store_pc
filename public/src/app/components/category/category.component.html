@@ -1,0 +1,69 @@
+<div class="lds-css ng-scope" style="margin-top:100px;" *ngIf="loading">
+  <div style="width:100%;height:100%" class="lds-eclipse">
+    <div></div>
+  </div>
+</div>
+
+
+<div class="products" *ngIf="uno" style="margin-top:100px;">
+
+<mat-card style="cursor:pointer;" (click)="detailsProd(product.ASIN)" class="example-card animated fadeIn" *ngFor="let product of uno; let i = index">
+
+  <img  style="width:300px;" class="imageProduct" [src]="product.LargeImage.URL" [alt]="product.ItemAttributes.Title">
+  <mat-card-content>
+    <p class="titulo-items">
+    {{product.ItemAttributes.Title}}
+    </p>
+    <b class="price">{{product.ItemAttributes.ListPrice.FormattedPrice}}</b>
+  </mat-card-content>
+  <mat-card-actions>
+    <a target="_blank" rel="nofollow" [href]='product.DetailPageURL' style="cursor:pointer;" class="btn btn-success">Comprar</a>
+    <a target="_blank" rel="nofollow" [href]="amazo+'AssociateTag='+tag+'&ASIN.1='+product.ASIN+'&Quantity.1=1'" style="cursor:pointer;" class="btn btn-primary">ADD Carro</a>
+    <button (click)="detailsProd(product.ASIN)" style="cursor:pointer;" class="btn btn-info">Detalles</button>
+  </mat-card-actions>
+</mat-card>
+</div>
+
+
+<div class="products" *ngIf="dos">
+
+<mat-card style="cursor:pointer;" (click)="detailsProd(productdos.ASIN)" class="example-card animated fadeIn" *ngFor="let productdos of dos; let i = index">
+
+  <img  style="width:300px;" class="imageProduct" [src]="productdos.LargeImage.URL" [alt]="productdos.ItemAttributes.Title">
+  <mat-card-content>
+    <p class="titulo-items">
+    {{productdos.ItemAttributes.Title}}
+    </p>
+    <b class="price">{{productdos.ItemAttributes.ListPrice.FormattedPrice}}</b>
+  </mat-card-content>
+  <mat-card-actions>
+    <a target="_blank" rel="nofollow" [href]='productdos.DetailPageURL' style="cursor:pointer;" class="btn btn-success">Comprar</a>
+    <a target="_blank" rel="nofollow" [href]="amazo+'AssociateTag='+tag+'&ASIN.1='+productdos.ASIN+'&Quantity.1=1'" style="cursor:pointer;" class="btn btn-primary">ADD Carro</a>
+    <button (click)="detailsProd(productdos.ASIN)" style="cursor:pointer;" class="btn btn-info">Detalles</button>
+  </mat-card-actions>
+</mat-card>
+
+</div>
+
+
+
+<div class="products">
+
+<mat-card style="cursor:pointer;" (click)="detailsProd(producttres.ASIN)" class="example-card animated fadeIn" *ngFor="let producttres of tres; let i = index">
+
+  <img   style="width:300px;" class="imageProduct" [src]="producttres.LargeImage.URL || producttres.MediumImage.URL" [alt]="producttres.ItemAttributes.Title">
+  <mat-card-content>
+    <p class="titulo-items">
+    {{producttres.ItemAttributes.Title}}
+    </p>
+    <b class="price">{{producttres.ItemAttributes.ListPrice.FormattedPrice}}</b>
+  </mat-card-content>
+  <mat-card-actions>
+    <a target="_blank" rel="nofollow" [href]='producttres.DetailPageURL' style="cursor:pointer;" class="btn btn-success">Comprar</a>
+    <a target="_blank" rel="nofollow" [href]="amazo+'AssociateTag='+tag+'&ASIN.1='+producttres.ASIN+'&Quantity.1=1'" style="cursor:pointer;" class="btn btn-primary">ADD Carro</a>
+    <button (click)="detailsProd(producttres.ASIN)" style="cursor:pointer;" class="btn btn-info">Detalles</button>
+  </mat-card-actions>
+</mat-card>
+
+
+</div>

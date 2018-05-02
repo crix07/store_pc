@@ -1,0 +1,180 @@
+<div class="titulos animated fadeIn" style="margin-top:100px;">
+  <h1>Tu tienda online de tecnologia favorita líder por precio, calidad y servicio.</h1>
+
+  <h2 *ngIf="identity">Hey TU {{identity.displayName}} Buenos Dias que la pases Genial Comprando! :) </h2>
+  <h2 *ngIf="!identity">Hey TU no te has suscrito? te lo estas perdiendo TODO! <a [routerLink]="['/register']">Hazlo Aqui</a></h2>
+</div>
+
+
+<div class="avisos">
+  <b>Comparador de Productos!!</b>
+  <p>Proximamente ....</p>
+</div>
+
+  <div style="justify-content: center;" class="animated fadeIn container">
+
+  <div class="animated fadeIn menu">
+
+
+    <button mat-button [matMenuTriggerFor]="componentes">Componentes</button>
+
+    <mat-menu #componentes="matMenu">
+      <a (click)="returnCategory('motherboards')" #placas mat-menu-item>Placas Base</a>
+      <a mat-menu-item (click)="returnCategory('processor')">Procesadores</a>
+      <a mat-menu-item (click)="returnCategory('Hard drives')">Discos Duros</a>
+      <a mat-menu-item (click)="returnCategory('Graphic Cards')">Tarjetas Gráficas</a>
+      <a mat-menu-item (click)="returnCategory('RAM')">Memoria RAM</a>
+      <a mat-menu-item (click)="returnCategory('towers')">Torres/Cajas/Carcasas</a>
+      <a mat-menu-item (click)="returnCategory('Power Sources')">Fuentes Alimentación</a>
+    </mat-menu>
+
+
+    <button mat-button [matMenuTriggerFor]="ordenadores">Ordenadores</button>
+
+    <mat-menu #ordenadores="matMenu">
+      <a mat-menu-item (click)="returnCategory('Laptops')">Portátiles</a>
+      <a mat-menu-item (click)="returnCategory('Laptops gaming')">Portátiles Gaming</a>
+      <a mat-menu-item (click)="returnCategory('Laptops SSD')">Portátiles SSD</a>
+      <a mat-menu-item (click)="returnCategory('PCS')">PCS SobreMesa</a>
+      <a mat-menu-item [matMenuTriggerFor]="marcas">Ordenadores por Marcas</a>
+    </mat-menu>
+
+
+
+
+    <button mat-button [matMenuTriggerFor]="smartphones">Periféricos</button>
+
+    <mat-menu #smartphones="matMenu">
+      <a mat-menu-item (click)="returnCategory('monitores')">Monitores</a>
+      <a mat-menu-item (click)="returnCategory('Keyboards gaming')">Teclados</a>
+      <a mat-menu-item (click)="returnCategory('mouses gaming')">Ratones</a>
+      <a mat-menu-item (click)="returnCategory('Microphones')">Micrófonos</a>
+      <a mat-menu-item (click)="returnCategory('Speakers')">Altavoces</a>
+      <a mat-menu-item (click)="returnCategory('Headphones gaming')">Auriculares</a>
+      <a mat-menu-item (click)="returnCategory('gaming chairs')">Sillas Gaming</a>
+      <a mat-menu-item (click)="returnCategory('Webcam')">Webcam/Cámaras Web</a>
+    </mat-menu>
+
+
+
+        <mat-menu #marcas="matMenu">
+          <a mat-menu-item (click)="returnCategory('Acer notebooks')">Portátiles Acer</a>
+          <a mat-menu-item (click)="returnCategory('MacBook ')">Portátiles Apple</a>
+          <a mat-menu-item (click)="returnCategory('Asus notebooks')">Portátiles Asus</a>
+          <a mat-menu-item (click)="returnCategory('Dell notebooks')">Portátiles Dell</a>
+          <a mat-menu-item (click)="returnCategory('HP notebooks')">Portátiles HP</a>
+          <a mat-menu-item (click)="returnCategory('Lenovo notebooks')">Portátiles Lenovo</a>
+          <a mat-menu-item (click)="returnCategory('Toshiba notebooks')">Portátiles Toshiba</a>
+          <a mat-menu-item (click)="returnCategory('MSI notebooks')">Portátiles MSI</a>
+        </mat-menu>
+
+
+
+    <button mat-button [matMenuTriggerFor]="consolas">Consolas/Gaming</button>
+
+    <mat-menu #consolas="matMenu">
+      <a mat-menu-item (click)="returnCategory('PS4')">SONY PS4</a>
+      <a mat-menu-item (click)="returnCategory('XBOX ONE')">XBOX ONE</a>
+      <a mat-menu-item (click)="returnCategory('XBOX 360')">XBOX 360</a>
+      <a mat-menu-item (click)="returnCategory('PS3')">SONY PS3</a>
+      <a mat-menu-item (click)="returnCategory('WII y WIIU')">NINTENDO WII/WIIU</a>
+      <a mat-menu-item (click)="returnCategory('PSP Y PS VITA')">SONY PSP/PS VITA</a>
+      <a mat-menu-item [matMenuTriggerFor]="pcgaming">PC GAMING</a>
+      <a mat-menu-item (click)="returnCategory('NINTENDO SWITCH')">NINTENDO SWITCH</a>
+    </mat-menu>
+
+
+    <mat-menu #pcgaming="matMenu">
+      <a mat-menu-item (click)="returnCategory('CONTROLLERS')">Gamepads y Mandos</a>
+      <a mat-menu-item (click)="returnCategory('Joysticks')">Joysticks</a>
+      <a mat-menu-item (click)="returnCategory('Auriculares')">Auriculares</a>
+      <a mat-menu-item (click)="returnCategory('Keyboards Gaming')">Teclados Gaming</a>
+      <a mat-menu-item (click)="returnCategory('Mouses Gaming')">Ratones Gaming</a>
+      <a mat-menu-item (click)="returnCategory('chars Gaming')">Sillas Gaming</a>
+      <a mat-menu-item (click)="returnCategory('mouse pads')">Alfombrillas</a>
+    </mat-menu>
+  </div>
+  </div>
+
+<br>
+
+
+
+<div class="lds-css ng-scope" *ngIf="loading">
+  <div style="width:100%;height:100%" class="lds-eclipse">
+    <div></div>
+  </div>
+</div>
+
+
+
+<h5 style="text-align:center;" *ngIf="uno">Placas Base</h5>
+  <div class="products" *ngIf="uno">
+
+  <mat-card style="cursor:pointer;" (click)="detailsProd(product.ASIN)" class="example-card animated fadeIn" *ngFor="let product of uno; let i = index">
+
+    <img  style="width:300px;" class="imageProduct" [src]="product.LargeImage.URL" [alt]="product.ItemAttributes.Title">
+    <mat-card-content>
+      <p class="titulo-items">
+      {{product?.ItemAttributes.Title}}
+      </p>
+      <b class="price">{{product?.ItemAttributes.ListPrice.FormattedPrice}}</b>
+    </mat-card-content>
+    <mat-card-actions>
+      <a target="_blank" rel="nofollow" [href]='product.DetailPageURL' style="cursor:pointer;" class="btn btn-success">Comprar</a>
+      <a target="_blank" rel="nofollow" (click)="addCart(i)" [href]="amazo+'AssociateTag='+tag+'&ASIN.1='+product.ASIN+'&Quantity.1=1'" style="cursor:pointer;" class="btn btn-primary">ADD Carro</a>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+
+<br><br>
+
+
+<h5 style="text-align:center;" *ngIf="dos">Tarjetas Gráficas</h5>
+
+  <div class="products" *ngIf="dos">
+
+  <mat-card style="cursor:pointer;" (click)="detailsProd(productDos.ASIN)" class="example-card animated fadeIn" *ngFor="let productDos of dos; let i = index">
+
+    <img  style="width:300px;" class="imageProduct" [src]="productDos.LargeImage.URL" [alt]="productDos.ItemAttributes.Title">
+    <mat-card-content>
+      <p class="titulo-items">
+      {{productDos?.ItemAttributes.Title}}
+      </p>
+      <b class="price">
+        {{productDos?.ItemAttributes?.ListPrice?.FormattedPrice}}
+      </b>
+    </mat-card-content>
+    <mat-card-actions>
+      <a target="_blank" rel="nofollow" [href]='productDos.DetailPageURL' style="cursor:pointer;" class="btn btn-success">Comprar</a>
+      <a target="_blank" rel="nofollow" (click)="addCartDos(i)" [href]="amazo+'AssociateTag='+tag+'&ASIN.1='+productDos.ASIN+'&Quantity.1=1'" style="cursor:pointer;" class="btn btn-primary">ADD Carro</a>
+    </mat-card-actions>
+  </mat-card>
+  </div>
+
+
+
+
+
+<br><br>
+
+
+<h5 style="text-align:center;" *ngIf="tres">Teclados Gaming</h5>
+
+  <div class="products" *ngIf="tres">
+
+  <mat-card style="cursor:pointer;" (click)="detailsProd(productTres.ASIN)" class="example-card animated fadeIn" *ngFor="let productTres of tres; let i = index">
+
+    <img  style="width:300px;" class="imageProduct" [src]="productTres.LargeImage.URL" [alt]="productTres.ItemAttributes.Title">
+    <mat-card-content>
+      <p class="titulo-items">
+      {{productTres?.ItemAttributes.Title}}
+      </p>
+      <b class="price">{{productTres?.ItemAttributes.ListPrice.FormattedPrice}}</b>
+    </mat-card-content>
+    <mat-card-actions>
+      <a target="_blank" rel="nofollow" [href]='productTres.DetailPageURL' style="cursor:pointer;" class="btn btn-success">Comprar</a>
+      <a target="_blank" rel="nofollow" (click)="addCartTres(i)" [href]="amazo+'AssociateTag='+tag+'&ASIN.1='+productTres.ASIN+'&Quantity.1=1'" style="cursor:pointer;" class="btn btn-primary">ADD Carro</a>
+    </mat-card-actions>
+  </mat-card>
+  </div>

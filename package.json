@@ -1,0 +1,30 @@
+{
+    "name": "tienda-online",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "apac": "^3.0.2",
+        "bcrypt-nodejs": "0.0.3",
+        "body-parser": "^1.18.2",
+        "connect-multiparty": "^2.1.0",
+        "ejs": "^2.5.7",
+        "express": "^4.16.1",
+        "jsonwebtoken": "^8.0.1",
+        "jwt-simple": "^0.5.1",
+        "moment": "^2.19.1",
+        "mongoose": "^4.12.0",
+        "morgan": "^1.9.0",
+        "nodemailer": "^4.4.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.12.1"
+    }
+}

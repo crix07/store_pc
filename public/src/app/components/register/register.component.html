@@ -1,0 +1,70 @@
+<div class="register animated fadeIn" style="margin-top:100px;">
+
+<!--
+<div class="alert alert-success" *ngIf="!err">
+  Registro Completado Correctamente ya puedes
+  <a [routerLink]="['/login']">Iniciar Sesion Aqui.</a>
+</div> -->
+
+<div class="alert alert-danger animated fadeIn" *ngIf="!forma.controls.displayName.valid && forma.controls.displayName.touched || !forma.controls.email.valid && forma.controls.email.touched || !forma.controls.password1.valid && forma.controls.password1.touched">
+  Favor rellenar todos los campos Correctamente
+</div>
+
+<div class="alert alert-danger animated fadeIn" *ngIf="err == 'auth/invalid-email'">
+  Ingrese su Dirrecion de Correo Electronico Correctamente.
+</div>
+
+
+<div class="alert alert-danger animated fadeIn" *ngIf="err == 'auth/email-already-in-use'">
+  La dirección de correo electrónico ya está siendo utilizada por otra cuenta.
+</div>
+
+<div class="alert alert-danger animated fadeIn" *ngIf="err == 'auth/weak-password'">
+  La contraseña debe tener al menos 6 caracteres
+</div>
+
+<div class="formulario animated fadeIn">
+
+
+<form  [formGroup]="forma"  (ngSubmit)="registerWithFire()">
+  <p class="texto animated fadeIn">{{title}}</p>
+
+      <mat-form-field>
+        <input type="email" style="color: #000;" matInput id="displayName" formControlName="displayName"  placeholder="Nombre de Usuario">
+      </mat-form-field>
+      <br>
+      <div *ngIf="!forma.controls.displayName.valid && forma.controls.displayName.touched">
+        <p style="color:red; font-size:12px;">Introduce Tu Nombre de Usuario Correctamente</p>
+      </div>
+
+
+<div class="email">
+
+    <mat-form-field>
+      <input type="email" matInput style="color: #000;" id="emailRegister" formControlName="email"  placeholder="Correo Electronico">
+    </mat-form-field>
+    <div *ngIf="!forma.controls.email.valid && forma.controls.email.touched">
+      <p style="color:red; font-size:12px;">Introduce Tu Correo Electronico Correctamente</p>
+    </div>
+
+  </div>
+<div class="form2">
+
+  <div class="password1">
+
+    <mat-form-field>
+      <input type="password" matInput id="passRegister" style="color: #000;" formControlName="password1"  placeholder="Constraseña">
+    </mat-form-field>
+    <div *ngIf="!forma.controls.password1.valid && forma.controls.password1.touched">
+      <p style="color:red; font-size:12px;">Introduce La Contraseña Correctamente</p>
+    </div>
+  </div>
+
+  </div>
+
+    <button mat-button class="btn btn-primary" style="background-color:#007bff;" type="submit">{{title}}</button>
+
+
+</form>
+</div>
+</div>
